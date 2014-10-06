@@ -3,7 +3,6 @@ import wx
 import time
 import os
 import serial 
-import test
 from threading import Thread
 from pydispatch import dispatcher
 
@@ -109,11 +108,10 @@ class MainFrame(wx.Frame):
         self.m_panel3.Bind(wx.EVT_LEFT_DOWN, self.on_left_click)
 
  
-        self.Show()
+        
 
         self.port_list = []
         self.gui_port_text = []
-        self.enable_balloon = False
 
         #self.tbIcon = CustomTaskBarIcon(self)
         dispatcher.connect(self.add_ports, signal="PortChange", 
@@ -122,7 +120,8 @@ class MainFrame(wx.Frame):
         self.monitor = MonitorThread()
         self.monitor.setDaemon(True)
         self.monitor.start()
-       
+        self.Show()
+        self.Fit()
 
  
     #----------------------------------------------------------------------
@@ -136,7 +135,8 @@ class MainFrame(wx.Frame):
         for port in sender:
             if port not in self.port_list:
                 self.port_list.append(port)
-                self.update_gui()
+        self.update_gui()
+
 
 
 
