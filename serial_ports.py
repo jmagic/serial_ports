@@ -121,6 +121,7 @@ class MainFrame(wx.Frame):
         self.monitor.setDaemon(True)
         self.monitor.start()
         self.Show()
+        self.Fit()
 
  
     #----------------------------------------------------------------------
@@ -134,7 +135,8 @@ class MainFrame(wx.Frame):
         for port in sender:
             if port not in self.port_list:
                 self.port_list.append(port)
-                self.update_gui()
+        self.update_gui()
+
 
 
 
