@@ -1,5 +1,5 @@
 # -*- mode: python -*-
-a = Analysis(['serial_ports.pyw'],
+a = Analysis(['serial_ports.py'],
              pathex=['C:\\Users\\jim.maciejewski\\Documents\\serial_ports'],
              hiddenimports=[],
              hookspath=None,
