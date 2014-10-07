@@ -1,5 +1,5 @@
 # -*- mode: python -*-
-a = Analysis(['serial_ports.py'],
+a = Analysis(['serial_ports.pyw'],
              pathex=['C:\\Users\\jim.maciejewski\\Documents\\serial_ports'],
              hiddenimports=[],
              hookspath=None,
@@ -14,4 +14,4 @@ exe = EXE(pyz,
           debug=False,
           strip=None,
           upx=True,
-          console=True )
+          console=False )
