@@ -151,3 +151,4 @@ if __name__ == "__main__":
     ex = Ui_Form()
     ex.show()
     sys.exit(app.exec_())
+    
