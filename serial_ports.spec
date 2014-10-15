@@ -4,14 +4,27 @@ a = Analysis(['serial_ports.py'],
              hiddenimports=[],
              hookspath=None,
              runtime_hooks=None)
+a.datas += [('dsub.png', 'dsub.png', 'DATA')]
+a.datas += [('dsub.ico', 'dsub.ico', 'DATA')]
+
 pyz = PYZ(a.pure)
+
 exe = EXE(pyz,
           a.scripts,
-          a.binaries,
-          a.zipfiles,
-          a.datas,
+          exclude_binaries=True,
           name='serial_ports.exe',
           debug=False,
           strip=None,
           upx=True,
-          console=False )
+          console=False,
+          icon='dsub.ico')
+
+
+coll = COLLECT(exe,
+               a.binaries,
+               a.zipfiles,
+               a.datas,
+               strip=None,
+               upx=True,
+               name='serial_ports')
+
