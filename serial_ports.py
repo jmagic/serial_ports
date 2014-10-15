@@ -26,7 +26,7 @@ class MonitorThread(Thread):
                 self.updateStatus(ports)
                 ports_old = ports
             time.sleep(5)
-            print '.'
+
 #----------------------------------------------------------------------
     def serial_ports(self):
         """
@@ -68,8 +68,12 @@ class SystemTrayIcon(QtGui.QSystemTrayIcon):
         self.monitor.setDaemon(True)
         self.monitor.start()
         self.setToolTip('None')
-        print self.supportsMessages()
-        self.showMessage('Hello', 'Test')
+        self.quitAction = QtGui.QAction("&Quit", self,
+                triggered=QtGui.qApp.quit)
+        
+        self.trayIconMenu = QtGui.QMenu(parent)
+        self.trayIconMenu.addAction(self.quitAction)
+        self.setContextMenu(self.trayIconMenu)
 
 
     def add_ports(self, sender):
@@ -107,7 +111,7 @@ def main():
     app = QtGui.QApplication(sys.argv)
 
     w = QtGui.QWidget()
-    trayIcon = SystemTrayIcon(QtGui.QIcon("dsub2.png"), w)
+    trayIcon = SystemTrayIcon(QtGui.QIcon("dsub.png"), w)
 
     trayIcon.show()
     sys.exit(app.exec_())
