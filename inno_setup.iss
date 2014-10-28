@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Serial Ports"
-#define MyAppVersion "v0.0.3"
+#define MyAppVersion "v0.0.4"
 #define MyAppPublisher "Itsmagic Software"
 #define MyAppURL "http://www.ornear.com/serial_ports"
 #define MyAppExeName "serial_ports.exe"
@@ -22,10 +22,12 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 OutputDir=C:\Users\jim.maciejewski\Documents\serial_ports\Output
-OutputBaseFilename=serial_ports_v0.0.3_setup
+OutputBaseFilename=serial_ports_v0.0.4_setup
 SetupIconFile=C:\Users\jim.maciejewski\Documents\serial_ports\dist\serial_ports\dsub.ico
 Compression=lzma
 SolidCompression=yes
+
+PrivilegesRequired=admin
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -41,6 +43,7 @@ Source: "C:\Users\jim.maciejewski\Documents\serial_ports\dist\serial_ports\*"; D
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{commonstartup}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
